@@ -13,7 +13,7 @@ public class Oblig1 {
 
     public static void main(String[] args) {
 
-        int [] a = {8,3,6,1,3};
+        int [] a = {1,2,3,4,5};
 
         System.out.println(ombyttinger(a));
 
@@ -25,6 +25,18 @@ public class Oblig1 {
     }
 
     ///// Oppgave 1 //////////////////////////////////////
+
+    /**
+     *
+     * @param a
+     * Svar på teoretisk spørsmål i oppgaven:
+     * 1:   Det blir flest ombyttinger hvis det første tallet er større enn det andre
+     *      Dette fører til at de vil bytte plass hver gang det neste tallet er større
+     * 2:   Det vil bli mindre ombytter om det største tallet ligger bakerst
+     *      men det vil være ingen ombyttinger hvis tabellen er sortert.
+     *
+     * @return
+     */
     public static int maks(int[] a) {
         if (a.length < 1){
             throw new java.util.NoSuchElementException("Tabellen du har oppgitt er tom!");
@@ -66,6 +78,7 @@ public class Oblig1 {
             }else if (a[maksVerdiPosisjon] > a[i]){
                 int temp = a[i];
                 a[i] = a[maksVerdiPosisjon];
+                //Her teller vi opp antall ombyttinger
                 antallOmbyttinger++;
                 a[maksVerdiPosisjon] = temp;
                 maksVerdiPosisjon = i;
