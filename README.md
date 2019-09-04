@@ -3,6 +3,8 @@
 Denne oppgaven er en innlevering i Algoritmer og Datastrukturer. 
 Oppgaven er levert av følgende studenter:
 * Navn Navnesen, S981737, s981737@oslomet.no
+* Jo Vetle Albrehsen, s329329, s329329@oslomet.no
+* Sigmund Cook
 * ...
 
 # Arbeidsfordeling
