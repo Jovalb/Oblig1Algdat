@@ -12,7 +12,13 @@ import java.util.NoSuchElementException;
 public class Oblig1 {
 
     public static void main(String[] args) {
-        System.out.println("Dette er en test");
+
+        int [] a = {8,3,6,1,3};
+
+        System.out.println(ombyttinger(a));
+
+        System.out.println(Arrays.toString(a));
+
     }
 
     private Oblig1() {
@@ -20,11 +26,52 @@ public class Oblig1 {
 
     ///// Oppgave 1 //////////////////////////////////////
     public static int maks(int[] a) {
-        throw new NotImplementedException();
+        if (a.length < 1){
+            throw new java.util.NoSuchElementException("Tabellen du har oppgitt er tom!");
+        }
+
+        int maksVerdiPosisjon = 0;
+
+        for (int i = 1; i < a.length; i++){
+            //Sammenligner nåværende tall med maksverditallet
+            if (a[i] > a[maksVerdiPosisjon]){
+                maksVerdiPosisjon = i;
+                // Hvis nåværende maksverdi er større enn nåværende tall i loop
+                // Så vil den bytte om
+            }else if (a[maksVerdiPosisjon] > a[i]){
+                int temp = a[i];
+                a[i] = a[maksVerdiPosisjon];
+                a[maksVerdiPosisjon] = temp;
+                maksVerdiPosisjon = i;
+            }
+        }
+
+        return a[maksVerdiPosisjon];
     }
 
     public static int ombyttinger(int[] a) {
-        throw new NotImplementedException();
+        if (a.length < 1){
+            throw new java.util.NoSuchElementException("Tabellen du har oppgitt er tom!");
+        }
+
+        int maksVerdiPosisjon = 0;
+        int antallOmbyttinger = 0;
+
+        for (int i = 1; i < a.length; i++){
+            //Sammenligner nåværende tall med maksverditallet
+            if (a[i] > a[maksVerdiPosisjon]){
+                maksVerdiPosisjon = i;
+                // Hvis nåværende maksverdi er større enn nåværende tall i loop
+                // Så vil den bytte om
+            }else if (a[maksVerdiPosisjon] > a[i]){
+                int temp = a[i];
+                a[i] = a[maksVerdiPosisjon];
+                antallOmbyttinger++;
+                a[maksVerdiPosisjon] = temp;
+                maksVerdiPosisjon = i;
+            }
+        }
+        return antallOmbyttinger;
     }
 
     ///// Oppgave 2 //////////////////////////////////////
