@@ -29,13 +29,15 @@ public class Oblig1 {
     /**
      *
      * @param a
+     * @return
+     *
      * Svar på teoretisk spørsmål i oppgaven:
      * 1:   Det blir flest ombyttinger hvis det første tallet er større enn det andre
      *      Dette fører til at de vil bytte plass hver gang det neste tallet er større
      * 2:   Det vil bli mindre ombytter om det største tallet ligger bakerst
      *      men det vil være ingen ombyttinger hvis tabellen er sortert.
      *
-     * @return
+     *
      */
     public static int maks(int[] a) {
         if (a.length < 1){
