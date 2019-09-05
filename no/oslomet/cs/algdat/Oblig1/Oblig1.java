@@ -11,6 +11,8 @@ import java.util.NoSuchElementException;
 
 public class Oblig1 {
 
+    // TODO: Fjern all slags test kode i denne filen som f.eks public static void main og alt innhold i den
+
     public static void main(String[] args) {
 
         int [] worst_case = {10,9,8,7,6,5,4,3,2,1};
