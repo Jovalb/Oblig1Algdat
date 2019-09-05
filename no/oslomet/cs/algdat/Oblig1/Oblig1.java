@@ -52,7 +52,7 @@ public class Oblig1 {
      */
     public static int maks(int[] a) {
         if (a.length < 1){
-            throw new java.util.NoSuchElementException("Tabellen du har oppgitt er tom!");
+            throw new NoSuchElementException("Tabellen du har oppgitt er tom!");
         }
 
         int maksVerdiPosisjon = 0;
@@ -76,7 +76,7 @@ public class Oblig1 {
 
     public static int ombyttinger(int[] a) {
         if (a.length < 1){
-            throw new java.util.NoSuchElementException("Tabellen du har oppgitt er tom!");
+            throw new NoSuchElementException("Tabellen du har oppgitt er tom!");
         }
 
         int maksVerdiPosisjon = 0;
