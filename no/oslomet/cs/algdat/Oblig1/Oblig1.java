@@ -13,11 +13,21 @@ public class Oblig1 {
 
     public static void main(String[] args) {
 
-        int [] a = {1,2,3,4,5};
+        int [] worst_case = {10,9,8,7,6,5,4,3,2,1};
 
-        System.out.println(ombyttinger(a));
+        int [] best_case = {1,2,3,4,5,6,7,8,9,10};
 
-        System.out.println(Arrays.toString(a));
+        System.out.println("Worst Case: ");
+
+        System.out.println(ombyttinger(worst_case));
+
+        System.out.println(Arrays.toString(worst_case));
+
+        System.out.println("Best Case:");
+
+        System.out.println(ombyttinger(best_case));
+
+        System.out.println(Arrays.toString(best_case));
 
     }
 
