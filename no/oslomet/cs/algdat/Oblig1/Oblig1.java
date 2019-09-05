@@ -47,7 +47,11 @@ public class Oblig1 {
      * 1:   Det blir flest ombyttinger hvis tabellen er revers sortert
      * 2:   Det vil bli mindre ombytter om det største tallet ligger bakerst
      *      men det vil være ingen ombyttinger hvis tabellen er sortert.
-     *
+     * 3:   I tilfellet hvor tabellen er permutert tilfeldig vil den forventede verdien på antall byttinger
+     *      være 0 eller 1 operasjon hver gang if test er riktig. Den forventede verdien
+     *      blir beregnet som (0+1)*1/2 hvor 1/2 er sjansen for at det blir ingen bytting
+     *      eller 1 bytting. (log(10)-0.423)*1/2 = ca 0.94 ? Vet ikke om noe som er skrevet
+     *      her er i hele tatt nærme det riktige svaret men er det jeg tenkte på akkurat nå.
      *
      */
     public static int maks(int[] a) {
