@@ -5,6 +5,7 @@ package no.oslomet.cs.algdat.Oblig1;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
@@ -12,9 +13,11 @@ import java.util.NoSuchElementException;
 public class Oblig1 {
 
     // TODO: Fjern all slags test kode i denne filen som f.eks public static void main og alt innhold i den
+    // TODO: Gjør ferdig oppgave 1 teori ang gjennomsnittspørsmålet
 
     public static void main(String[] args) {
 
+        // Oppgve 1 testing
         int [] worst_case = {10,9,8,7,6,5,4,3,2,1};
 
         int [] best_case = {1,2,3,4,5,6,7,8,9,10};
@@ -30,6 +33,14 @@ public class Oblig1 {
         System.out.println(ombyttinger(best_case));
 
         System.out.println(Arrays.toString(best_case));
+        //Oppgave 1
+
+        //Oppgave 2 testing
+
+        int [] b = {3,3,4,5,5,6,7,7,7,8};
+
+        System.out.println(Arrays.toString(b));
+        System.out.println(antallUlikeSortert(b));
 
     }
 
@@ -47,11 +58,8 @@ public class Oblig1 {
      * 1:   Det blir flest ombyttinger hvis tabellen er revers sortert
      * 2:   Det vil bli mindre ombytter om det største tallet ligger bakerst
      *      men det vil være ingen ombyttinger hvis tabellen er sortert.
-     * 3:   I tilfellet hvor tabellen er permutert tilfeldig vil den forventede verdien på antall byttinger
-     *      være 0 eller 1 operasjon hver gang if test er riktig. Den forventede verdien
-     *      blir beregnet som (0+1)*1/2 hvor 1/2 er sjansen for at det blir ingen bytting
-     *      eller 1 bytting. (log(10)-0.423)*1/2 = ca 0.94 ? Vet ikke om noe som er skrevet
-     *      her er i hele tatt nærme det riktige svaret men er det jeg tenkte på akkurat nå.
+     * 3:   Hvis vi lager tilfeldig tabeller og kjører ombytting på den vil vi kunne
+     *      få gjennomsnittet om vi legger sammen alle ombyttingene og deler det på antall forsøk.
      *
      */
     public static int maks(int[] a) {
@@ -105,8 +113,32 @@ public class Oblig1 {
     }
 
     ///// Oppgave 2 //////////////////////////////////////
+
+    /**
+     *
+     * @param a
+     * @return
+     *
+     * Fullført oppgaven og kjørt test og den fungerer
+     */
     public static int antallUlikeSortert(int[] a) {
-        throw new NotImplementedException();
+        //Her må vi starte telleren på en da det er minst ett tall som er unikt
+        int antallUlike = 1;
+
+        if (a.length == 0){
+            return 0;
+        }
+
+        for (int i = 0; i < a.length-1; i++){
+            //Her så sjekker vi om første tallet i array enten er mindre eller lik tallet etter
+            //Hvis det første ikke er mindre eller lik det andre tallet er ikke taballen sortert stigende
+            if(!(a[i] <= a[i+1])){
+                throw new IllegalStateException("Tabellen du har oppgitt er ikke sortert stigende!");
+            }else if (a[i] != a[i+1]){
+                antallUlike++;
+            }
+        }
+        return antallUlike;
     }
 
 
