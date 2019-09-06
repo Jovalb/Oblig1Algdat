@@ -8,6 +8,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
+import java.util.Random;
 
 
 public class Oblig1 {
@@ -33,6 +34,56 @@ public class Oblig1 {
         System.out.println(ombyttinger(best_case));
 
         System.out.println(Arrays.toString(best_case));
+
+        System.out.println("Average Case ut av 10 forskjellige arrays med 5 tall: ");
+
+        System.out.println("Stokker om 10 arrays med tall fra 1 til 10...");
+
+        int [] arr1 = new int [10];
+        int [] arr2 = new int [10];
+        int [] arr3 = new int [10];
+        int [] arr4 = new int [10];
+        int [] arr5 = new int [10];
+        int [] arr6 = new int [10];
+        int [] arr7 = new int [10];
+        int [] arr8 = new int [10];
+        int [] arr9 = new int [10];
+        int [] arr10 = new int [10];
+
+        randPerm(arr1);
+        randPerm(arr2);
+        randPerm(arr3);
+        randPerm(arr4);
+        randPerm(arr5);
+        randPerm(arr6);
+        randPerm(arr7);
+        randPerm(arr8);
+        randPerm(arr9);
+        randPerm(arr10);
+
+
+        System.out.println("Array nummer 1: "+Arrays.toString(arr1));
+        System.out.println("Array nummer 2: "+Arrays.toString(arr2));
+        System.out.println("Array nummer 3: "+Arrays.toString(arr3));
+        System.out.println("Array nummer 4: "+Arrays.toString(arr4));
+        System.out.println("Array nummer 5: "+Arrays.toString(arr5));
+        System.out.println("Array nummer 6: "+Arrays.toString(arr6));
+        System.out.println("Array nummer 7: "+Arrays.toString(arr7));
+        System.out.println("Array nummer 8: "+Arrays.toString(arr8));
+        System.out.println("Array nummer 9: "+Arrays.toString(arr9));
+        System.out.println("Array nummer 10: "+Arrays.toString(arr10));
+
+        System.out.println("Utfører ombytting på alle tabellene...");
+        double antallArrays = 10;
+        double sumAvOmbytter = ombyttinger(arr1)+ombyttinger(arr2)+ombyttinger(arr3)
+                +ombyttinger(arr4)+ombyttinger(arr5)+ombyttinger(arr6)+ombyttinger(arr7)
+                +ombyttinger(arr8)+ombyttinger(arr9)+ombyttinger(arr10);
+        double gjennomsnitt = sumAvOmbytter/antallArrays;
+
+        System.out.println("Alle ombytter lagt sammen = "+sumAvOmbytter);
+        System.out.println("Gjennomsnitt ombytter av 10 forskjellige arrays med tall fra 1 til 10 = "+gjennomsnitt);
+
+
         //Oppgave 1
 
         //Oppgave 2 testing
@@ -45,6 +96,24 @@ public class Oblig1 {
     }
 
     private Oblig1() {
+    }
+
+    // TODO: Fjern randPerm() og bytt() når testing er ferdig
+    public static void randPerm(int[] a)  // stokker om a
+    {
+        Random r = new Random();     // en randomgenerator
+
+        Arrays.setAll(a,i -> i+1); // Putter inn tall fra 1 til n i array
+
+        for (int k = a.length - 1; k > 0; k--)
+        {
+            int i = r.nextInt(k + 1);  // tilfeldig tall fra [0,k]
+            bytt(a,k,i);
+        }
+    }
+
+    public static void bytt(int[] a, int i, int j){
+        int temp = a[i]; a[i] = a[j]; a[j] = temp;
     }
 
     ///// Oppgave 1 //////////////////////////////////////
@@ -60,6 +129,8 @@ public class Oblig1 {
      *      men det vil være ingen ombyttinger hvis tabellen er sortert.
      * 3:   Hvis vi lager tilfeldig tabeller og kjører ombytting på den vil vi kunne
      *      få gjennomsnittet om vi legger sammen alle ombyttingene og deler det på antall forsøk.
+     *      Etter å ha testet med 10 arrays med 10 tall fra 1 til 10 har jeg kommet frem til
+     *      at det er gjennomsnittlig 7 ombytter ut av 10 tilfeldig permuterte arrays.
      *
      */
     public static int maks(int[] a) {
