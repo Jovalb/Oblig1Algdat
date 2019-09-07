@@ -90,11 +90,24 @@ public class Oblig1 {
         //Oppgave 2 testing
 
         System.out.println("Oppgave 2 testing: ");
+        System.out.println("Sortert array: ");
 
         int [] b = {3,3,4,5,5,6,7,7,7,8};
 
         System.out.println(Arrays.toString(b));
         System.out.println(antallUlikeSortert(b));
+
+        //Oppgave 2
+
+        //Oppgave 3 testing
+
+        System.out.println("Oppgave 3 testing: ");
+        System.out.println("Usortert array : ");
+
+        int [] c = {1, 2, 2, 2, 2, 2, 3};
+
+        System.out.println(Arrays.toString(c));
+        if (antallUlikeUsortert(c) != 3) System.out.println("Test");
 
     }
 
@@ -188,13 +201,7 @@ public class Oblig1 {
 
     ///// Oppgave 2 //////////////////////////////////////
 
-    /**
-     *
-     * @param a
-     * @return
-     *
-     * Fullført oppgaven og kjørt test og den fungerer
-     */
+    //Fullført oppgave 2
     public static int antallUlikeSortert(int[] a) {
         //Her må vi starte telleren på en da det er minst ett tall som er unikt
         int antallUlike = 1;
@@ -202,7 +209,6 @@ public class Oblig1 {
         if (a.length == 0){
             return 0;
         }
-
         for (int i = 0; i < a.length-1; i++){
             //Her så sjekker vi om første tallet i array enten er mindre eller lik tallet etter
             //Hvis det første ikke er mindre eller lik det andre tallet er ikke taballen sortert stigende
@@ -217,8 +223,30 @@ public class Oblig1 {
 
 
     ///// Oppgave 3 //////////////////////////////////////
+    //Fullført oppgave 3
     public static int antallUlikeUsortert(int[] a) {
-        throw new NotImplementedException();
+
+        int antallUlike = 1;
+        int j = 0;
+
+        if (a.length == 0){
+            return 0;
+        }
+        //Her har vi hovedloopen som vil lese gjennom alle tallene i tabellen
+        //Variablen i vil øke når vi finner et likt tall eller at alle tall som er sjekket før er ulikt
+        for (int i = 1; i < a.length; i++)
+        {
+            //Her bruker vi en ny for-loop som vil sammenligne alle tall som kommer før posisjon "i"
+            for (j = 0; j < i; j++)
+                //Denne testen gjør at vi hopper ut av for loopen og går videre til neste variabel "i"
+                if (a[i] == a[j])
+                    break;
+
+            //Her vil vi hoppe ut av loopen hvis i treffer j
+            if (i == j)
+                antallUlike++;
+        }
+        return antallUlike;
     }
 
     ///// Oppgave 4 //////////////////////////////////////
