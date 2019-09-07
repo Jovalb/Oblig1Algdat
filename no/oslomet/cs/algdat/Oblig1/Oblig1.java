@@ -209,6 +209,7 @@ public class Oblig1 {
         if (a.length == 0){
             return 0;
         }
+
         for (int i = 0; i < a.length-1; i++){
             //Her så sjekker vi om første tallet i array enten er mindre eller lik tallet etter
             //Hvis det første ikke er mindre eller lik det andre tallet er ikke taballen sortert stigende
@@ -238,11 +239,11 @@ public class Oblig1 {
         {
             //Her bruker vi en ny for-loop som vil sammenligne alle tall som kommer før posisjon "i"
             for (j = 0; j < i; j++)
-                //Denne testen gjør at vi hopper ut av for loopen og går videre til neste variabel "i"
+                //Her sjekker vi om vi får samme verdi, isåfall hopper vi ut av loopen og går til neste tall
                 if (a[i] == a[j])
                     break;
 
-            //Her vil vi hoppe ut av loopen hvis i treffer j
+            //Her vil vi hoppe ut av loopen og øke antallUlike hvis i treffer j
             if (i == j)
                 antallUlike++;
         }
