@@ -109,6 +109,17 @@ public class Oblig1 {
         System.out.println(Arrays.toString(c));
         if (antallUlikeUsortert(c) != 3) System.out.println("Test");
 
+        //Oppgave 4 testing
+        System.out.println("Oppgave 4 testing: ");
+
+        int []  d = {1, 2, 3, 5, 4, 6};
+
+        System.out.println("Før delsortering: ");
+        System.out.println(Arrays.toString(d));
+        System.out.println("Etter delsortering: ");
+        delsortering(d);
+        System.out.println(Arrays.toString(d));
+
     }
 
     private Oblig1() {
@@ -251,8 +262,48 @@ public class Oblig1 {
     }
 
     ///// Oppgave 4 //////////////////////////////////////
+    // Metoden gjør jobben men er for ineffektiv
     public static void delsortering(int[] a) {
-        throw new NotImplementedException();
+        int h = a.length-1;
+        int v = 0;
+
+        //Har laget en metode som putter alle partall på høyre og oddetall på venstre men ikke stigende
+        while (v < h){
+            while (a[v] % 2 != 0 && v < h){
+                v++;
+            }
+            while (a[h] % 2 == 0 && v < h){
+                h--;
+            }
+            if (v < h){
+                int temp = a[h];
+                a[h] = a[v];
+                a[v] = temp;
+                v++;
+                h--;
+            }
+        }
+
+        // bubble sort som sorterer alt stigende på høyre siden
+        for (int i = h; i < a.length-1; i++){
+            for (int j = h; j < a.length-1;j++)
+            if (a[j] > a[j+1] && a[j] % 2 == 0){
+                int temp = a[j+1];
+                a[j+1] = a[j];
+                a[j] = temp;
+            }
+        }
+
+        // bubble sort som sorterer alt stigende på venstre siden
+        for (int i = 0; i <= v; i++){
+            for (int j = 0; j < v;j++)
+                if (a[j] > a[j+1] && a[j+1] %  2 != 0){
+                    int temp = a[j+1];
+                    a[j+1] = a[j];
+                    a[j] = temp;
+                }
+        }
+
     }
 
     ///// Oppgave 5 //////////////////////////////////////
