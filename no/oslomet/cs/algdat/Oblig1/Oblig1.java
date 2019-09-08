@@ -262,7 +262,7 @@ public class Oblig1 {
     }
 
     ///// Oppgave 4 //////////////////////////////////////
-    // Metoden gjør jobben men er for ineffektiv
+    // TODO: Koden gjør jobben men er alt for ineffektiv og bruker for lang tid
     public static void delsortering(int[] a) {
         int h = a.length-1;
         int v = 0;
