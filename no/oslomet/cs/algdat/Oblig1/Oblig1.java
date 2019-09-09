@@ -266,11 +266,13 @@ public class Oblig1 {
     public static void delsortering(int[] a) {
         int h = a.length-1;
         int v = 0;
+        int odd = 0;
 
         //Har laget en metode som putter alle partall på høyre og oddetall på venstre men ikke stigende
         while (v < h){
             while (a[v] % 2 != 0 && v < h){
                 v++;
+                odd++;
             }
             while (a[h] % 2 == 0 && v < h){
                 h--;
@@ -281,6 +283,12 @@ public class Oblig1 {
                 a[v] = temp;
                 v++;
                 h--;
+            }
+        }
+
+        for (int i = v; i > 0; i--){
+            if (a[i] < a[i-1]){
+
             }
         }
 
