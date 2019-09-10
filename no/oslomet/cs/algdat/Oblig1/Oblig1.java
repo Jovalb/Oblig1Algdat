@@ -410,7 +410,7 @@ public class Oblig1 {
     }
 
     ///// Oppgave 6 //////////////////////////////////////
-    // TODO: Metoen gjør jobben men er altfor ineffektiv må forbedres!
+    // TODO: Metoden gjør jobben men er altfor ineffektiv må forbedres! Hint: Tenker å gjøre metoden rekursiv kan være lurt
     public static void rotasjon(char[] a, int k) {
         //Sjekker om det er 0 eller 1 element
         if (a.length == 0 || a.length == 1){
