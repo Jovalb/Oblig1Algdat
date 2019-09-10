@@ -112,7 +112,7 @@ public class Oblig1 {
         //Oppgave 4 testing
         System.out.println("Oppgave 4 testing: ");
 
-        int []  d = {1, 2, 3, 5, 4, 6};
+        int []  d = {1, 2, 4, 3, 5, 6};
 
         System.out.println("Før delsortering: ");
         System.out.println(Arrays.toString(d));
@@ -266,18 +266,23 @@ public class Oblig1 {
     public static void delsortering(int[] a) {
         int h = a.length-1;
         int v = 0;
-        int odd = 0;
+        int n = a.length;
+
+        if (a.length == 0){
+            return;
+        }
+
+
 
         //Har laget en metode som putter alle partall på høyre og oddetall på venstre men ikke stigende
         while (v < h){
-            while (a[v] % 2 != 0 && v < h){
+            if (a[v] % 2 != 0 && v < h){
                 v++;
-                odd++;
             }
-            while (a[h] % 2 == 0 && v < h){
+            else if (a[h] % 2 == 0 && v < h){
                 h--;
             }
-            if (v < h){
+            else if (v < h){
                 int temp = a[h];
                 a[h] = a[v];
                 a[v] = temp;
@@ -286,12 +291,68 @@ public class Oblig1 {
             }
         }
 
-        for (int i = v; i > 0; i--){
-            if (a[i] < a[i-1]){
+        //if tester som sjekker om indeksene v og h stemmer
+        if (v == 0 && h == 0){
+            for (int i = 0; i < n-1; i++)
+            {
+                // Find the minimum element in unsorted array
+                int min_idx = i;
+                for (int j = i+1; j < n; j++)
+                    if (a[j] < a[min_idx])
+                        min_idx = j;
 
+                // Swap the found minimum element with the first
+                // element
+                int temp = a[min_idx];
+                a[min_idx] = a[i];
+                a[i] = temp;
             }
+        } else if (v > h){
+            h++;
         }
 
+        //if test som sjekker om variabelen hvor indeksene har truffet er partall eller oddetall
+        //Hvis tallet er oddetall inkrementerer vi høyreindeksen
+        if (a[h] % 2 != 0){
+            h++;
+        // Hvis tallet er partall flytter vi venstreindeksen ned et hakk
+        } else if (a[v] % 2 == 0){
+            v--;
+        }
+
+        //selection sort som sorterer partallene på høyresiden
+        for (int i = h; i < n-1; i++)
+        {
+            // Find the minimum element in unsorted array
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (a[j] < a[min_idx])
+                    min_idx = j;
+
+            // Swap the found minimum element with the first
+            // element
+            int temp = a[min_idx];
+            a[min_idx] = a[i];
+            a[i] = temp;
+        }
+
+        //Selection sort som sorterer oddetallene på venstresiden
+        for (int i = 0; i <= v; i++)
+        {
+            // Find the minimum element in unsorted array
+            int min_idx = i;
+            for (int j = i+1; j <= v; j++)
+                if (a[j] < a[min_idx])
+                    min_idx = j;
+
+            // Swap the found minimum element with the first
+            // element
+            int temp = a[min_idx];
+            a[min_idx] = a[i];
+            a[i] = temp;
+        }
+
+        /*
         // bubble sort som sorterer alt stigende på høyre siden
         for (int i = h; i < a.length-1; i++){
             for (int j = h; j < a.length-1;j++)
@@ -310,7 +371,7 @@ public class Oblig1 {
                     a[j+1] = a[j];
                     a[j] = temp;
                 }
-        }
+        }*/
 
     }
 
