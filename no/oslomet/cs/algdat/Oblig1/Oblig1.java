@@ -120,6 +120,14 @@ public class Oblig1 {
         delsortering(d);
         System.out.println(Arrays.toString(d));
 
+        //Oppgave 5 testing
+        System.out.println("Oppgave 5 testing: ");
+
+        char [] e = {'A','B','C','D','E','F'};
+        System.out.println("Før: "+Arrays.toString(e));
+        rotasjon(e,-1);
+        System.out.println("Etter: "+Arrays.toString(e));
+
     }
 
     private Oblig1() {
@@ -376,13 +384,50 @@ public class Oblig1 {
     }
 
     ///// Oppgave 5 //////////////////////////////////////
+    //Fullført via bubble sort metode
     public static void rotasjon(char[] a) {
-        throw new NotImplementedException();
+        //Sjekker om det er 0 eller 1 element
+        if (a.length == 0 || a.length == 1){
+            return;
+        }
+
+        //Utfører rotasjon én gang
+        for (int i = 0; i < 1; i++){
+            for (int j = a.length - 1; j > 0; j--){
+                char temp = a[j];
+                a[j] = a[j-1];
+                a[j-1] = temp;
+            }
+        }
+
     }
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
-        throw new NotImplementedException();
+        //Sjekker om det er 0 eller 1 element
+        if (a.length == 0 || a.length == 1){
+            return;
+        }
+
+        //Utfører rotasjon én gang
+        if (k >= 0){
+            for (int i = 0; i < k; i++){
+                for (int j = a.length - 1; j > 0; j--){
+                    char temp = a[j];
+                    a[j] = a[j-1];
+                    a[j-1] = temp;
+                }
+            }
+        } else if (k < 0){
+            for (int i = 0; i > k; i--){
+                for (int j = a.length - 1; j > 0; j--){
+                    char temp = a[j];
+                    a[j] = a[j-1];
+                    a[j-1] = temp;
+                }
+            }
+        }
+
     }
 
     ///// Oppgave 7 //////////////////////////////////////
