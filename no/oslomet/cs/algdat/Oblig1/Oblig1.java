@@ -124,9 +124,16 @@ public class Oblig1 {
         System.out.println("Oppgave 5 testing: ");
 
         char [] e = {'A','B','C','D','E','F'};
+        System.out.println("k = 1");
         System.out.println("Før: "+Arrays.toString(e));
-        rotasjon(e,-1);
+        rotasjon(e,1);
         System.out.println("Etter: "+Arrays.toString(e));
+
+        char [] f = {'A','B','C','D','E','F'};
+        System.out.println("k = -1");
+        System.out.println("Før: "+Arrays.toString(f));
+        rotasjon(f,-1);
+        System.out.println("Etter: "+Arrays.toString(f));
 
     }
 
@@ -403,13 +410,14 @@ public class Oblig1 {
     }
 
     ///// Oppgave 6 //////////////////////////////////////
+    // TODO: Metoen gjør jobben men er altfor ineffektiv må forbedres!
     public static void rotasjon(char[] a, int k) {
         //Sjekker om det er 0 eller 1 element
         if (a.length == 0 || a.length == 1){
             return;
         }
 
-        //Utfører rotasjon én gang
+        //Utfører rotasjon k antall ganger
         if (k >= 0){
             for (int i = 0; i < k; i++){
                 for (int j = a.length - 1; j > 0; j--){
@@ -418,12 +426,20 @@ public class Oblig1 {
                     a[j-1] = temp;
                 }
             }
+            //utfører rotasjon motsatt vei k antall ganger
         } else if (k < 0){
             for (int i = 0; i > k; i--){
-                for (int j = a.length - 1; j > 0; j--){
-                    char temp = a[j];
-                    a[j] = a[j-1];
-                    a[j-1] = temp;
+                for (int j = 0; j < a.length-1; j++){
+                    if (j == a.length -2 ){
+                        char temp = a[j];
+                        a[j] = a[j+1];
+                        a[j+1] = temp;
+                    } else {
+                        char temp = a[j];
+                        a[j] = a[j+1];
+                        a[j+1] = temp;
+                    }
+
                 }
             }
         }
