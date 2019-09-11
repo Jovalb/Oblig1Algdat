@@ -20,9 +20,9 @@ public class Oblig1 {
 
         // Oppgve 1 testing
         System.out.println("Oppgave 1 testing: ");
-        int [] worst_case = {10,9,8,7,6,5,4,3,2,1};
+        int[] worst_case = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
-        int [] best_case = {1,2,3,4,5,6,7,8,9,10};
+        int[] best_case = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         System.out.println("Worst Case: ");
 
@@ -40,16 +40,16 @@ public class Oblig1 {
 
         System.out.println("Stokker om 10 arrays med tall fra 1 til 10...");
 
-        int [] arr1 = new int [10];
-        int [] arr2 = new int [10];
-        int [] arr3 = new int [10];
-        int [] arr4 = new int [10];
-        int [] arr5 = new int [10];
-        int [] arr6 = new int [10];
-        int [] arr7 = new int [10];
-        int [] arr8 = new int [10];
-        int [] arr9 = new int [10];
-        int [] arr10 = new int [10];
+        int[] arr1 = new int[10];
+        int[] arr2 = new int[10];
+        int[] arr3 = new int[10];
+        int[] arr4 = new int[10];
+        int[] arr5 = new int[10];
+        int[] arr6 = new int[10];
+        int[] arr7 = new int[10];
+        int[] arr8 = new int[10];
+        int[] arr9 = new int[10];
+        int[] arr10 = new int[10];
 
         randPerm(arr1);
         randPerm(arr2);
@@ -63,26 +63,26 @@ public class Oblig1 {
         randPerm(arr10);
 
 
-        System.out.println("Array nummer 1: "+Arrays.toString(arr1));
-        System.out.println("Array nummer 2: "+Arrays.toString(arr2));
-        System.out.println("Array nummer 3: "+Arrays.toString(arr3));
-        System.out.println("Array nummer 4: "+Arrays.toString(arr4));
-        System.out.println("Array nummer 5: "+Arrays.toString(arr5));
-        System.out.println("Array nummer 6: "+Arrays.toString(arr6));
-        System.out.println("Array nummer 7: "+Arrays.toString(arr7));
-        System.out.println("Array nummer 8: "+Arrays.toString(arr8));
-        System.out.println("Array nummer 9: "+Arrays.toString(arr9));
-        System.out.println("Array nummer 10: "+Arrays.toString(arr10));
+        System.out.println("Array nummer 1: " + Arrays.toString(arr1));
+        System.out.println("Array nummer 2: " + Arrays.toString(arr2));
+        System.out.println("Array nummer 3: " + Arrays.toString(arr3));
+        System.out.println("Array nummer 4: " + Arrays.toString(arr4));
+        System.out.println("Array nummer 5: " + Arrays.toString(arr5));
+        System.out.println("Array nummer 6: " + Arrays.toString(arr6));
+        System.out.println("Array nummer 7: " + Arrays.toString(arr7));
+        System.out.println("Array nummer 8: " + Arrays.toString(arr8));
+        System.out.println("Array nummer 9: " + Arrays.toString(arr9));
+        System.out.println("Array nummer 10: " + Arrays.toString(arr10));
 
         System.out.println("Utfører ombytting på alle tabellene...");
         double antallArrays = 10;
-        double sumAvOmbytter = ombyttinger(arr1)+ombyttinger(arr2)+ombyttinger(arr3)
-                +ombyttinger(arr4)+ombyttinger(arr5)+ombyttinger(arr6)+ombyttinger(arr7)
-                +ombyttinger(arr8)+ombyttinger(arr9)+ombyttinger(arr10);
-        double gjennomsnitt = sumAvOmbytter/antallArrays;
+        double sumAvOmbytter = ombyttinger(arr1) + ombyttinger(arr2) + ombyttinger(arr3)
+                + ombyttinger(arr4) + ombyttinger(arr5) + ombyttinger(arr6) + ombyttinger(arr7)
+                + ombyttinger(arr8) + ombyttinger(arr9) + ombyttinger(arr10);
+        double gjennomsnitt = sumAvOmbytter / antallArrays;
 
-        System.out.println("Alle ombytter lagt sammen = "+sumAvOmbytter);
-        System.out.println("Gjennomsnitt ombytter av 10 forskjellige arrays med tall fra 1 til 10 = "+gjennomsnitt);
+        System.out.println("Alle ombytter lagt sammen = " + sumAvOmbytter);
+        System.out.println("Gjennomsnitt ombytter av 10 forskjellige arrays med tall fra 1 til 10 = " + gjennomsnitt);
 
 
         //Oppgave 1
@@ -92,7 +92,7 @@ public class Oblig1 {
         System.out.println("Oppgave 2 testing: ");
         System.out.println("Sortert array: ");
 
-        int [] b = {3,3,4,5,5,6,7,7,7,8};
+        int[] b = {3, 3, 4, 5, 5, 6, 7, 7, 7, 8};
 
         System.out.println(Arrays.toString(b));
         System.out.println(antallUlikeSortert(b));
@@ -104,7 +104,7 @@ public class Oblig1 {
         System.out.println("Oppgave 3 testing: ");
         System.out.println("Usortert array : ");
 
-        int [] c = {1, 2, 2, 2, 2, 2, 3};
+        int[] c = {1, 2, 2, 2, 2, 2, 3};
 
         System.out.println(Arrays.toString(c));
         if (antallUlikeUsortert(c) != 3) System.out.println("Test");
@@ -112,8 +112,8 @@ public class Oblig1 {
         //Oppgave 4 testing
         System.out.println("Oppgave 4 testing: ");
 
-        int []  d = {5,3,9,1};
-       // randPerm(d);
+        int[] d = {5, 3, 9, 1};
+        // randPerm(d);
 
         System.out.println("Før delsortering: ");
         System.out.println(Arrays.toString(d));
@@ -124,17 +124,17 @@ public class Oblig1 {
         //Oppgave 5 testing
         System.out.println("Oppgave 5 testing: ");
 
-        char [] e = {'A','B','C','D','E','F'};
+        char[] e = {'A', 'B', 'C', 'D', 'E', 'F'};
         System.out.println("k = 1");
-        System.out.println("Før: "+Arrays.toString(e));
-        rotasjon(e,1);
-        System.out.println("Etter: "+Arrays.toString(e));
+        System.out.println("Før: " + Arrays.toString(e));
+        rotasjon(e, 1);
+        System.out.println("Etter: " + Arrays.toString(e));
 
-        char [] f = {'A','B','C','D','E','F'};
+        char[] f = {'A', 'B', 'C', 'D', 'E', 'F'};
         System.out.println("k = -1");
-        System.out.println("Før: "+Arrays.toString(f));
-        rotasjon(f,-1);
-        System.out.println("Etter: "+Arrays.toString(f));
+        System.out.println("Før: " + Arrays.toString(f));
+        rotasjon(f, -1);
+        System.out.println("Etter: " + Arrays.toString(f));
 
     }
 
@@ -146,47 +146,42 @@ public class Oblig1 {
     {
         Random r = new Random();     // en randomgenerator
 
-        Arrays.setAll(a,i -> i+1); // Putter inn tall fra 1 til n i array
+        Arrays.setAll(a, i -> i + 1); // Putter inn tall fra 1 til n i array
 
-        for (int k = a.length - 1; k > 0; k--)
-        {
+        for (int k = a.length - 1; k > 0; k--) {
             int i = r.nextInt(k + 1);  // tilfeldig tall fra [0,k]
-            bytt(a,k,i);
+            bytt(a, k, i);
         }
     }
 
     ///// Oppgave 1 //////////////////////////////////////
 
     /**
-     *
      * @param a
-     * @return
-     *
-     * Svar på teoretisk spørsmål i oppgaven:
+     * @return Svar på teoretisk spørsmål i oppgaven:
      * 1:   Det blir flest ombyttinger hvis tabellen er revers sortert
      * 2:   Det vil bli mindre ombytter om det største tallet ligger bakerst
-     *      men det vil være ingen ombyttinger hvis tabellen er sortert.
+     * men det vil være ingen ombyttinger hvis tabellen er sortert.
      * 3:   Hvis vi lager tilfeldig tabeller og kjører ombytting på den vil vi kunne
-     *      få gjennomsnittet om vi legger sammen alle ombyttingene og deler det på antall forsøk.
-     *      Etter å ha testet med 10 arrays med 10 tall fra 1 til 10 har jeg kommet frem til
-     *      at det er gjennomsnittlig 7 ombytter ut av 10 tilfeldig permuterte arrays.
-     *      Hvis vi skal bruke O notasjon vil den utføre byttet
-     *
+     * få gjennomsnittet om vi legger sammen alle ombyttingene og deler det på antall forsøk.
+     * Etter å ha testet med 10 arrays med 10 tall fra 1 til 10 har jeg kommet frem til
+     * at det er gjennomsnittlig 7 ombytter ut av 10 tilfeldig permuterte arrays.
+     * Hvis vi skal bruke O notasjon vil den utføre byttet
      */
     public static int maks(int[] a) {
-        if (a.length < 1){
+        if (a.length < 1) {
             throw new NoSuchElementException("Tabellen du har oppgitt er tom!");
         }
 
         int maksVerdiPosisjon = 0;
 
-        for (int i = 1; i < a.length; i++){
+        for (int i = 1; i < a.length; i++) {
             //Sammenligner nåværende tall med maksverditallet
-            if (a[i] > a[maksVerdiPosisjon]){
+            if (a[i] > a[maksVerdiPosisjon]) {
                 maksVerdiPosisjon = i;
                 // Hvis nåværende maksverdi er større enn nåværende tall i loop
                 // Så vil den bytte om
-            }else if (a[maksVerdiPosisjon] > a[i]){
+            } else if (a[maksVerdiPosisjon] > a[i]) {
                 int temp = a[i];
                 a[i] = a[maksVerdiPosisjon];
                 a[maksVerdiPosisjon] = temp;
@@ -198,20 +193,20 @@ public class Oblig1 {
     }
 
     public static int ombyttinger(int[] a) {
-        if (a.length < 1){
+        if (a.length < 1) {
             throw new NoSuchElementException("Tabellen du har oppgitt er tom!");
         }
 
         int maksVerdiPosisjon = 0;
         int antallOmbyttinger = 0;
 
-        for (int i = 1; i < a.length; i++){
+        for (int i = 1; i < a.length; i++) {
             //Sammenligner nåværende tall med maksverditallet
-            if (a[i] > a[maksVerdiPosisjon]){
+            if (a[i] > a[maksVerdiPosisjon]) {
                 maksVerdiPosisjon = i;
                 // Hvis nåværende maksverdi er større enn nåværende tall i loop
                 // Så vil den bytte om
-            }else if (a[maksVerdiPosisjon] > a[i]){
+            } else if (a[maksVerdiPosisjon] > a[i]) {
                 int temp = a[i];
                 a[i] = a[maksVerdiPosisjon];
                 //Her teller vi opp antall ombyttinger
@@ -230,16 +225,16 @@ public class Oblig1 {
         //Her må vi starte telleren på en da det er minst ett tall som er unikt
         int antallUlike = 1;
 
-        if (a.length == 0){
+        if (a.length == 0) {
             return 0;
         }
 
-        for (int i = 0; i < a.length-1; i++){
+        for (int i = 0; i < a.length - 1; i++) {
             //Her så sjekker vi om første tallet i array enten er mindre eller lik tallet etter
             //Hvis det første ikke er mindre eller lik det andre tallet er ikke taballen sortert stigende
-            if(!(a[i] <= a[i+1])){
+            if (!(a[i] <= a[i + 1])) {
                 throw new IllegalStateException("Tabellen du har oppgitt er ikke sortert stigende!");
-            }else if (a[i] != a[i+1]){
+            } else if (a[i] != a[i + 1]) {
                 antallUlike++;
             }
         }
@@ -254,13 +249,12 @@ public class Oblig1 {
         int antallUlike = 1;
         int j = 0;
 
-        if (a.length == 0){
+        if (a.length == 0) {
             return 0;
         }
         //Her har vi hovedloopen som vil lese gjennom alle tallene i tabellen
         //Variablen i vil øke når vi finner et likt tall eller at alle tall som er sjekket før er ulikt
-        for (int i = 1; i < a.length; i++)
-        {
+        for (int i = 1; i < a.length; i++) {
             //Her bruker vi en ny for-loop som vil sammenligne alle tall som kommer før posisjon "i"
             for (j = 0; j < i; j++)
                 //Her sjekker vi om vi får samme verdi, isåfall hopper vi ut av loopen og går til neste tall
@@ -277,25 +271,26 @@ public class Oblig1 {
     ///// Oppgave 4 //////////////////////////////////////
     // TODO: LØST OPPGAVEN VIA MERGESORT
 
-    public static void bytt(int[] a, int i, int j){
-        int temp = a[i]; a[i] = a[j]; a[j] = temp;
+    public static void bytt(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
 
-    static void merge(int arr[], int v, int m, int h)
-    {
+    static void merge(int arr[], int v, int m, int h) {
         // Finne størrelser av subarray
         int n1 = m - v + 1;
         int n2 = h - m;
 
         // Her lager vi de miderltidige arrayene for oddetall på venstre og partall på høyre
-        int V[] = new int [n1];
-        int H[] = new int [n2];
+        int V[] = new int[n1];
+        int H[] = new int[n2];
 
         // Kopierer tall fra original array inn i subarrays
-        for (int i=0; i<n1; ++i)
+        for (int i = 0; i < n1; ++i)
             V[i] = arr[v + i];
-        for (int j=0; j<n2; ++j)
-            H[j] = arr[m + 1+ j];
+        for (int j = 0; j < n2; ++j)
+            H[j] = arr[m + 1 + j];
 
 
         // Her merger vi subarrayaen så de kommer tilbake i original arrayet
@@ -305,15 +300,11 @@ public class Oblig1 {
 
         // Her setter vi opp initialindeksen for arrayet vi skal merge sammen
         int k = v;
-        while (i < n1 && j < n2)
-        {
-            if (V[i] <= H[j])
-            {
+        while (i < n1 && j < n2) {
+            if (V[i] <= H[j]) {
                 arr[k] = V[i];
                 i++;
-            }
-            else
-            {
+            } else {
                 arr[k] = H[j];
                 j++;
             }
@@ -321,16 +312,14 @@ public class Oblig1 {
         }
 
         // Kopierer resten av tallene i venstrearrayet hvis det er noen tall igjen
-        while (i < n1)
-        {
+        while (i < n1) {
             arr[k] = V[i];
             i++;
             k++;
         }
 
         // Kopierer resten av tallene i høyrearrayet hvis det er noen tall igjen
-        while (j < n2)
-        {
+        while (j < n2) {
             arr[k] = H[j];
             j++;
             k++;
@@ -338,16 +327,14 @@ public class Oblig1 {
     }
 
     // Hoved funksjon som sorterer arrayet vil være merge metoden
-    static void sort(int arr[], int v, int h)
-    {
-        if (v < h)
-        {
+    static void sort(int arr[], int v, int h) {
+        if (v < h) {
             // Finner midtpunktet
-            int m = (v+h)/2;
+            int m = (v + h) / 2;
 
             // Sorterer første halvdel, og andre halvdel av arrayet
             sort(arr, v, m);
-            sort(arr , m+1, h);
+            sort(arr, m + 1, h);
 
             // Merger de sorterte arrayene
             merge(arr, v, m, h);
@@ -356,29 +343,27 @@ public class Oblig1 {
 
 
     public static void delsortering(int[] a) {
-        int h = a.length-1;
+        int h = a.length - 1;
         int v = 0;
         int odd = 0;
         int par = 0;
 
-        if (a.length == 0){
+        if (a.length == 0) {
             return;
-        }else if(a.length == 1){
+        } else if (a.length == 1) {
             return;
         }
 
 
-        //Har laget en metode som putter alle partall på høyre og oddetall på venstre men ikke stigende
-        while (v < h){
-            if (a[v] % 2 != 0 && v < h){
+        //Har laget en metode som putter alle partall på høyre og oddetall på venstre
+        while (v < h) {
+            if (a[v] % 2 != 0 && v < h) {
                 v++;
                 odd++;
-            }
-            else if (a[h] % 2 == 0 && v < h){
+            } else if (a[h] % 2 == 0 && v < h) {
                 h--;
                 par++;
-            }
-            else if (v < h){
+            } else if (v < h) {
                 int temp = a[h];
                 a[h] = a[v];
                 a[v] = temp;
@@ -387,21 +372,21 @@ public class Oblig1 {
             }
         }
 
-        if (v == 0 || h == 0){
-            sort(a,0,a.length-1);
+        if (v == 0 || h == 0) {
+            sort(a, 0, a.length - 1);
             return;
         }
 
-        while (a[h] % 2 != 0 && h < a.length-1){
+        while (a[h] % 2 != 0 && h < a.length - 1) {
             h++;
             // Hvis tallet er partall flytter vi venstreindeksen ned et hakk
         }
-        while (a[v] % 2 == 0 && v > 0){
+        while (a[v] % 2 == 0 && v > 0) {
             v--;
         }
 
-        sort(a,0,v);
-        sort(a,h,a.length-1);
+        sort(a, 0, v);
+        sort(a, h, a.length - 1);
 
         /*
         //if tester som sjekker om indeksene v og h stemmer
@@ -471,16 +456,16 @@ public class Oblig1 {
     //Fullført via bubble sort metode
     public static void rotasjon(char[] a) {
         //Sjekker om det er 0 eller 1 element
-        if (a.length == 0 || a.length == 1){
+        if (a.length == 0 || a.length == 1) {
             return;
         }
 
         //Utfører rotasjon én gang
-        for (int i = 0; i < 1; i++){
-            for (int j = a.length - 1; j > 0; j--){
+        for (int i = 0; i < 1; i++) {
+            for (int j = a.length - 1; j > 0; j--) {
                 char temp = a[j];
-                a[j] = a[j-1];
-                a[j-1] = temp;
+                a[j] = a[j - 1];
+                a[j - 1] = temp;
             }
         }
 
@@ -490,31 +475,32 @@ public class Oblig1 {
     // TODO: Metoden gjør jobben men er altfor ineffektiv må forbedres! Hint: Tenker å gjøre metoden rekursiv kan være lurt
     public static void rotasjon(char[] a, int k) {
         //Sjekker om det er 0 eller 1 element
-        if (a.length == 0 || a.length == 1){
+        if (a.length == 0 || a.length == 1) {
             return;
         }
 
+
         //Utfører rotasjon k antall ganger
-        if (k >= 0){
-            for (int i = 0; i < k; i++){
-                for (int j = a.length - 1; j > 0; j--){
+        if (k >= 0) {
+            for (int i = 0; i < k; i++) {
+                for (int j = a.length - 1; j > 0; j--) {
                     char temp = a[j];
-                    a[j] = a[j-1];
-                    a[j-1] = temp;
+                    a[j] = a[j - 1];
+                    a[j - 1] = temp;
                 }
             }
             //utfører rotasjon motsatt vei k antall ganger
-        } else if (k < 0){
-            for (int i = 0; i > k; i--){
-                for (int j = 0; j < a.length-1; j++){
-                    if (j == a.length -2 ){
+        } else if (k < 0) {
+            for (int i = 0; i > k; i--) {
+                for (int j = 0; j < a.length - 1; j++) {
+                    if (j == a.length - 2) {
                         char temp = a[j];
-                        a[j] = a[j+1];
-                        a[j+1] = temp;
+                        a[j] = a[j + 1];
+                        a[j + 1] = temp;
                     } else {
                         char temp = a[j];
-                        a[j] = a[j+1];
-                        a[j+1] = temp;
+                        a[j] = a[j + 1];
+                        a[j + 1] = temp;
                     }
 
                 }
