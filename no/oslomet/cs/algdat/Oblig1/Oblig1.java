@@ -112,7 +112,8 @@ public class Oblig1 {
         //Oppgave 4 testing
         System.out.println("Oppgave 4 testing: ");
 
-        int []  d = {1, 2, 4, 3, 5, 6};
+        int []  d = {5,3,9,1};
+       // randPerm(d);
 
         System.out.println("Før delsortering: ");
         System.out.println(Arrays.toString(d));
@@ -140,7 +141,7 @@ public class Oblig1 {
     private Oblig1() {
     }
 
-    // TODO: Fjern randPerm() og bytt() når testing er ferdig
+    // TODO: Fjern randPerm() når testing er ferdig
     public static void randPerm(int[] a)  // stokker om a
     {
         Random r = new Random();     // en randomgenerator
@@ -152,10 +153,6 @@ public class Oblig1 {
             int i = r.nextInt(k + 1);  // tilfeldig tall fra [0,k]
             bytt(a,k,i);
         }
-    }
-
-    public static void bytt(int[] a, int i, int j){
-        int temp = a[i]; a[i] = a[j]; a[j] = temp;
     }
 
     ///// Oppgave 1 //////////////////////////////////////
@@ -173,6 +170,7 @@ public class Oblig1 {
      *      få gjennomsnittet om vi legger sammen alle ombyttingene og deler det på antall forsøk.
      *      Etter å ha testet med 10 arrays med 10 tall fra 1 til 10 har jeg kommet frem til
      *      at det er gjennomsnittlig 7 ombytter ut av 10 tilfeldig permuterte arrays.
+     *      Hvis vi skal bruke O notasjon vil den utføre byttet
      *
      */
     public static int maks(int[] a) {
@@ -277,53 +275,108 @@ public class Oblig1 {
     }
 
     ///// Oppgave 4 //////////////////////////////////////
-    // TODO: Koden gjør jobben men er alt for ineffektiv og bruker for lang tid
+    // TODO: LØST OPPGAVEN VIA MERGESORT
 
-    static int partition(int arr[], int low, int high)
+    public static void bytt(int[] a, int i, int j){
+        int temp = a[i]; a[i] = a[j]; a[j] = temp;
+    }
+
+    static void merge(int arr[], int v, int m, int h)
     {
-        int pivot = arr[high];
-        int i = (low); // index of smaller element
-        for (int j=low; j<high; j++)
-        {
-            // If current element is smaller than the pivot
-            if (arr[j] > pivot)
-            {
-                i++;
+        // Finne størrelser av subarray
+        int n1 = m - v + 1;
+        int n2 = h - m;
 
-                // swap arr[i] and arr[j]
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+        // Her lager vi de miderltidige arrayene for oddetall på venstre og partall på høyre
+        int V[] = new int [n1];
+        int H[] = new int [n2];
+
+        // Kopierer tall fra original array inn i subarrays
+        for (int i=0; i<n1; ++i)
+            V[i] = arr[v + i];
+        for (int j=0; j<n2; ++j)
+            H[j] = arr[m + 1+ j];
+
+
+        // Her merger vi subarrayaen så de kommer tilbake i original arrayet
+
+        // Her setter vi opp initialindeksene for subarray 1 og 2
+        int i = 0, j = 0;
+
+        // Her setter vi opp initialindeksen for arrayet vi skal merge sammen
+        int k = v;
+        while (i < n1 && j < n2)
+        {
+            if (V[i] <= H[j])
+            {
+                arr[k] = V[i];
+                i++;
             }
+            else
+            {
+                arr[k] = H[j];
+                j++;
+            }
+            k++;
         }
 
-        // swap arr[i+1] and arr[high] (or pivot)
-        int temp = arr[i+1];
-        arr[i+1] = arr[high];
-        arr[high] = temp;
+        // Kopierer resten av tallene i venstrearrayet hvis det er noen tall igjen
+        while (i < n1)
+        {
+            arr[k] = V[i];
+            i++;
+            k++;
+        }
 
-        return i+1;
+        // Kopierer resten av tallene i høyrearrayet hvis det er noen tall igjen
+        while (j < n2)
+        {
+            arr[k] = H[j];
+            j++;
+            k++;
+        }
+    }
+
+    // Hoved funksjon som sorterer arrayet vil være merge metoden
+    static void sort(int arr[], int v, int h)
+    {
+        if (v < h)
+        {
+            // Finner midtpunktet
+            int m = (v+h)/2;
+
+            // Sorterer første halvdel, og andre halvdel av arrayet
+            sort(arr, v, m);
+            sort(arr , m+1, h);
+
+            // Merger de sorterte arrayene
+            merge(arr, v, m, h);
+        }
     }
 
 
     public static void delsortering(int[] a) {
         int h = a.length-1;
         int v = 0;
-        int n = a.length;
+        int odd = 0;
+        int par = 0;
 
         if (a.length == 0){
             return;
+        }else if(a.length == 1){
+            return;
         }
-
 
 
         //Har laget en metode som putter alle partall på høyre og oddetall på venstre men ikke stigende
         while (v < h){
             if (a[v] % 2 != 0 && v < h){
                 v++;
+                odd++;
             }
             else if (a[h] % 2 == 0 && v < h){
                 h--;
+                par++;
             }
             else if (v < h){
                 int temp = a[h];
@@ -334,8 +387,22 @@ public class Oblig1 {
             }
         }
 
-        partition(a,0,v);
-        partition(a,h,a.length-1);
+        if (v == 0 || h == 0){
+            sort(a,0,a.length-1);
+            return;
+        }
+
+        while (a[h] % 2 != 0 && h < a.length-1){
+            h++;
+            // Hvis tallet er partall flytter vi venstreindeksen ned et hakk
+        }
+        while (a[v] % 2 == 0 && v > 0){
+            v--;
+        }
+
+        sort(a,0,v);
+        sort(a,h,a.length-1);
+
         /*
         //if tester som sjekker om indeksene v og h stemmer
         if (v == 0 && h == 0){
@@ -396,7 +463,7 @@ public class Oblig1 {
             int temp = a[min_idx];
             a[min_idx] = a[i];
             a[i] = temp;
-        } */
+        }*/
 
     }
 
