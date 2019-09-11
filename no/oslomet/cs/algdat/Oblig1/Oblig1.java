@@ -278,6 +278,34 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     // TODO: Koden gjør jobben men er alt for ineffektiv og bruker for lang tid
+
+    static int partition(int arr[], int low, int high)
+    {
+        int pivot = arr[high];
+        int i = (low); // index of smaller element
+        for (int j=low; j<high; j++)
+        {
+            // If current element is smaller than the pivot
+            if (arr[j] > pivot)
+            {
+                i++;
+
+                // swap arr[i] and arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        // swap arr[i+1] and arr[high] (or pivot)
+        int temp = arr[i+1];
+        arr[i+1] = arr[high];
+        arr[high] = temp;
+
+        return i+1;
+    }
+
+
     public static void delsortering(int[] a) {
         int h = a.length-1;
         int v = 0;
@@ -306,6 +334,9 @@ public class Oblig1 {
             }
         }
 
+        partition(a,0,v);
+        partition(a,h,a.length-1);
+        /*
         //if tester som sjekker om indeksene v og h stemmer
         if (v == 0 && h == 0){
             for (int i = 0; i < n-1; i++)
@@ -365,28 +396,7 @@ public class Oblig1 {
             int temp = a[min_idx];
             a[min_idx] = a[i];
             a[i] = temp;
-        }
-
-        /*
-        // bubble sort som sorterer alt stigende på høyre siden
-        for (int i = h; i < a.length-1; i++){
-            for (int j = h; j < a.length-1;j++)
-            if (a[j] > a[j+1] && a[j] % 2 == 0){
-                int temp = a[j+1];
-                a[j+1] = a[j];
-                a[j] = temp;
-            }
-        }
-
-        // bubble sort som sorterer alt stigende på venstre siden
-        for (int i = 0; i <= v; i++){
-            for (int j = 0; j < v;j++)
-                if (a[j] > a[j+1] && a[j+1] %  2 != 0){
-                    int temp = a[j+1];
-                    a[j+1] = a[j];
-                    a[j] = temp;
-                }
-        }*/
+        } */
 
     }
 
