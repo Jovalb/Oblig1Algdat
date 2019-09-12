@@ -137,10 +137,17 @@ public class Oblig1 {
         System.out.println("Etter: " + Arrays.toString(f));
 
         // Oppgave 7 testing
-        System.out.println("Oppgave 7 testing: ");
+        // 7a
+        System.out.println("Oppgave 7a testing: ");
 
-        String x = "",y = "DEFGH";
-        System.out.println(flett(x,y));
+        String x = "", y = "DEFGH";
+        System.out.println(flett(x, y));
+
+        //7b
+        System.out.println("Oppgave 7b testing: ");
+        //String [] v = {"AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU"};
+        String [] v = {"ABC","DEFGH","IJKLMN"};
+        System.out.println(flett(v));
 
     }
 
@@ -510,11 +517,11 @@ public class Oblig1 {
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
+        // Her har jeg brukt teknikken hvor vi bruker "toCharArray" i String klassen
         char[] c = new char[s.toCharArray().length + t.toCharArray().length];  // en tabell av rett størrelse
         int i = 0, j = 0, k = 0;                 // løkkevariabler
 
-        while (i < s.toCharArray().length && j < t.toCharArray().length)
-        {
+        while (i < s.toCharArray().length && j < t.toCharArray().length) {
             c[k++] = s.toCharArray()[i++];      // først en verdi fra s
             c[k++] = t.toCharArray()[j++];      // så en verdi fra t
         }
@@ -529,7 +536,30 @@ public class Oblig1 {
 
     /// 7b)
     public static String flett(String... s) {
-        throw new NotImplementedException();
+        int sumStringLengde = 0;
+
+        for (String s1 : s) {
+            sumStringLengde += s1.length();
+        }
+
+        /*
+        for (int i = 0; i < s.length ; i++) {
+            sumStringLengde += s[i].length();
+        }*/
+
+        char [] a = new char[sumStringLengde];
+        int i = 0, j = 0, k = 0;
+
+        for (int x = 0; x < a.length-1; x++,i++,j++){
+            for (int y = 0; y < s.length; y+=2) {
+                a[k++] = s[y].toCharArray()[i];
+                a[k++] = s[y+1].toCharArray()[j];
+            }
+
+        }
+
+        String b = new String(a);
+        return b;
     }
 
     ///// Oppgave 8 //////////////////////////////////////
