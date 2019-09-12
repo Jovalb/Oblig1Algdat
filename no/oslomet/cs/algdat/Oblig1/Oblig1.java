@@ -146,9 +146,9 @@ public class Oblig1 {
         //7b
         System.out.println("Oppgave 7b testing: ");
         //String [] v = {"AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU"};
-        String [] v = {"ABC","DEFGH","IJKLMN","OPQ"};
+        String[] v = {"ABC", "DEFGH", "IJKLMN", "OPQ"};
         System.out.println(Arrays.toString(v));
-        System.out.println("Etter: "+ flett(v));
+        System.out.println("Etter: " + flett(v));
 
     }
 
@@ -537,6 +537,32 @@ public class Oblig1 {
 
     /// 7b)
     public static String flett(String... s) {
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < s.length; i++) {
+            for (int j = 0; j < s.length; j++) {
+
+                while (i >= s[j].length()) {
+                    if (j < s.length - 1) {
+                        j++;
+                    } else {
+                        break;
+                    }
+                }
+
+                if (s[j].length()-1 < i){
+                    break;
+                }
+
+                result.append(s[j].charAt(i));
+            }
+
+        }
+
+        return result.toString();
+
+
+        /*
         int sumStringLengde = 0;
 
         for (String s1 : s) {
@@ -548,17 +574,27 @@ public class Oblig1 {
             sumStringLengde += s[i].length();
         }*/
 
+        /*
         char [] a = new char[sumStringLengde];
         int i = 0, j = 0, k = 0,x = 0;
 
         for (; k < a.length; j++,i++,x++){
             for (int y = 0; y < s.length; y+=2) {
                 while (x >= s[y].length()){
-                    y++;
+                    if (y == s[y].length()){
+                        y--;
+                    }else {
+                        y++;
+                    }
+
                 }
                 if (y >= s.length-1){
                     a[k++] = s[y].toCharArray()[i];
-                }else{
+                } else if (s[y+1].length() <= x){
+                    a[k++] = s[y-1].toCharArray()[j];
+                    a[k++] = s[y].toCharArray()[i];
+                }
+                else{
                     a[k++] = s[y].toCharArray()[i];
                     a[k++] = s[y+1].toCharArray()[j];
                 }
@@ -567,7 +603,7 @@ public class Oblig1 {
         }
 
         String b = new String(a);
-        return b;
+        return b;*/
     }
 
     ///// Oppgave 8 //////////////////////////////////////
