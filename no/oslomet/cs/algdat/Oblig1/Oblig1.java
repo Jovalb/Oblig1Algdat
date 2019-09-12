@@ -146,8 +146,9 @@ public class Oblig1 {
         //7b
         System.out.println("Oppgave 7b testing: ");
         //String [] v = {"AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU"};
-        String [] v = {"ABC","DEFGH","IJKLMN"};
-        System.out.println(flett(v));
+        String [] v = {"ABC","DEFGH","IJKLMN","OPQ"};
+        System.out.println(Arrays.toString(v));
+        System.out.println("Etter: "+ flett(v));
 
     }
 
@@ -548,12 +549,19 @@ public class Oblig1 {
         }*/
 
         char [] a = new char[sumStringLengde];
-        int i = 0, j = 0, k = 0;
+        int i = 0, j = 0, k = 0,x = 0;
 
-        for (int x = 0; x < a.length-1; x++,i++,j++){
+        for (; k < a.length; j++,i++,x++){
             for (int y = 0; y < s.length; y+=2) {
-                a[k++] = s[y].toCharArray()[i];
-                a[k++] = s[y+1].toCharArray()[j];
+                while (x >= s[y].length()){
+                    y++;
+                }
+                if (y >= s.length-1){
+                    a[k++] = s[y].toCharArray()[i];
+                }else{
+                    a[k++] = s[y].toCharArray()[i];
+                    a[k++] = s[y+1].toCharArray()[j];
+                }
             }
 
         }
