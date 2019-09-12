@@ -472,14 +472,77 @@ public class Oblig1 {
     }
 
     ///// Oppgave 6 //////////////////////////////////////
-    // TODO: Metoden gjør jobben men er altfor ineffektiv må forbedres! Hint: Tenker å gjøre metoden rekursiv kan være lurt
-    public static void rotasjon(char[] a, int k) {
-        //Sjekker om det er 0 eller 1 element
-        if (a.length == 0 || a.length == 1) {
-            return;
+
+    /*
+    private static void venstreRotasjon(char[] inputArray, int n) {
+        //Her må vi gjøre n positiv da den er negativ i parameteren
+        n = (int)(Math.pow(n,2));
+
+        char temp;
+
+        for (int i = 0; i < n; i++)
+        {
+            temp = inputArray[0];
+
+            for (int j = 0; j < inputArray.length-1; j++)
+            {
+                inputArray[j] = inputArray[j+1];
+            }
+
+            inputArray[inputArray.length - 1] = temp;
         }
 
+    }
 
+    private static void høyreRotasjon(char[] inputArray, int n) {
+        char temp;
+
+        for (int i = 1; i <= n; i++)
+        {
+            temp = inputArray[inputArray.length-1];
+
+            for (int j = inputArray.length-1; j > 0; j--)
+            {
+                inputArray[j] = inputArray[j-1];
+            }
+
+            inputArray[0] = temp;
+        }
+
+    }*/
+
+    public static int gcd(int a, int b)  // Euklids algoritme
+    {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+
+    public static void rotasjon(char[] a, int k) {
+        //Sjekker om det er 0 eller 1 element
+        int n = a.length;  if (n < 2) return;         // ingen rotasjon
+        if ((k %= n) < 0) k += n;                     // motsatt vei?
+
+        int s = gcd(n, k);                            // største felles divisor
+
+        for (int e = 0; e < s; e++)                   // antall sykler
+        {
+            char verdi = a[e];                          // hjelpevariabel
+
+            for (int i = e - k, j = e; i != e; i -= k)  // løkke
+            {
+                if (i < 0) i += n;                        // sjekker fortegnet til i
+                a[j] = a[i]; j = i;                       // kopierer og oppdaterer j
+            }
+
+            a[e + k] = verdi;                           // legger tilbake verdien
+        }
+        /*
+        // NY METODE FORTSATT TREGT
+        if (k < 0){
+            venstreRotasjon(a,k);
+        } else if (k > 0) {
+            høyreRotasjon(a,k);
+        }*/
+        /* FORRIGE METODE Å ROTERE ARRAY SOM VAR FOR TREGT
         //Utfører rotasjon k antall ganger
         if (k >= 0) {
             for (int i = 0; i < k; i++) {
@@ -505,7 +568,7 @@ public class Oblig1 {
 
                 }
             }
-        }
+        }*/
 
     }
 
