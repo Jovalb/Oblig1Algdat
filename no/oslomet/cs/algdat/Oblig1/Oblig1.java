@@ -538,6 +538,7 @@ public class Oblig1 {
     /// 7b)
     public static String flett(String... s) {
 
+        // TODO: Trenger å finne ut hvordan vi kan få med alle arrays da indeks "i" stopper og det er resterende arrays
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < s.length; i++) {
             for (int j = 0; j < s.length; j++) {
@@ -550,7 +551,7 @@ public class Oblig1 {
                     }
                 }
 
-                if (s[j].length()-1 < i){
+                if (s[j].length() - 1 < i) {
                     break;
                 }
 
