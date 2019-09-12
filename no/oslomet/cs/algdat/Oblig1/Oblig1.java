@@ -122,7 +122,7 @@ public class Oblig1 {
         System.out.println(Arrays.toString(d));
 
         //Oppgave 5 testing
-        System.out.println("Oppgave 5 testing: ");
+        System.out.println("Oppgave 6 testing: ");
 
         char[] e = {'A', 'B', 'C', 'D', 'E', 'F'};
         System.out.println("k = 1");
@@ -133,8 +133,14 @@ public class Oblig1 {
         char[] f = {'A', 'B', 'C', 'D', 'E', 'F'};
         System.out.println("k = -1");
         System.out.println("Før: " + Arrays.toString(f));
-        rotasjon(f, -1);
+        rotasjon(f, -5);
         System.out.println("Etter: " + Arrays.toString(f));
+
+        // Oppgave 7 testing
+        System.out.println("Oppgave 7 testing: ");
+
+        String x = "",y = "DEFGH";
+        System.out.println(flett(x,y));
 
     }
 
@@ -472,53 +478,15 @@ public class Oblig1 {
     }
 
     ///// Oppgave 6 //////////////////////////////////////
-
-    /*
-    private static void venstreRotasjon(char[] inputArray, int n) {
-        //Her må vi gjøre n positiv da den er negativ i parameteren
-        n = (int)(Math.pow(n,2));
-
-        char temp;
-
-        for (int i = 0; i < n; i++)
-        {
-            temp = inputArray[0];
-
-            for (int j = 0; j < inputArray.length-1; j++)
-            {
-                inputArray[j] = inputArray[j+1];
-            }
-
-            inputArray[inputArray.length - 1] = temp;
-        }
-
-    }
-
-    private static void høyreRotasjon(char[] inputArray, int n) {
-        char temp;
-
-        for (int i = 1; i <= n; i++)
-        {
-            temp = inputArray[inputArray.length-1];
-
-            for (int j = inputArray.length-1; j > 0; j--)
-            {
-                inputArray[j] = inputArray[j-1];
-            }
-
-            inputArray[0] = temp;
-        }
-
-    }*/
-
+    // FULLFØRT
     public static int gcd(int a, int b)  // Euklids algoritme
     {
         return b == 0 ? a : gcd(b, a % b);
     }
 
     public static void rotasjon(char[] a, int k) {
-        //Sjekker om det er 0 eller 1 element
-        int n = a.length;  if (n < 2) return;         // ingen rotasjon
+        int n = a.length;
+        if (n < 2) return;         // ingen rotasjon
         if ((k %= n) < 0) k += n;                     // motsatt vei?
 
         int s = gcd(n, k);                            // største felles divisor
@@ -530,52 +498,33 @@ public class Oblig1 {
             for (int i = e - k, j = e; i != e; i -= k)  // løkke
             {
                 if (i < 0) i += n;                        // sjekker fortegnet til i
-                a[j] = a[i]; j = i;                       // kopierer og oppdaterer j
+                a[j] = a[i];
+                j = i;                       // kopierer og oppdaterer j
             }
 
             a[e + k] = verdi;                           // legger tilbake verdien
         }
-        /*
-        // NY METODE FORTSATT TREGT
-        if (k < 0){
-            venstreRotasjon(a,k);
-        } else if (k > 0) {
-            høyreRotasjon(a,k);
-        }*/
-        /* FORRIGE METODE Å ROTERE ARRAY SOM VAR FOR TREGT
-        //Utfører rotasjon k antall ganger
-        if (k >= 0) {
-            for (int i = 0; i < k; i++) {
-                for (int j = a.length - 1; j > 0; j--) {
-                    char temp = a[j];
-                    a[j] = a[j - 1];
-                    a[j - 1] = temp;
-                }
-            }
-            //utfører rotasjon motsatt vei k antall ganger
-        } else if (k < 0) {
-            for (int i = 0; i > k; i--) {
-                for (int j = 0; j < a.length - 1; j++) {
-                    if (j == a.length - 2) {
-                        char temp = a[j];
-                        a[j] = a[j + 1];
-                        a[j + 1] = temp;
-                    } else {
-                        char temp = a[j];
-                        a[j] = a[j + 1];
-                        a[j + 1] = temp;
-                    }
-
-                }
-            }
-        }*/
 
     }
 
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
-        throw new NotImplementedException();
+        char[] c = new char[s.toCharArray().length + t.toCharArray().length];  // en tabell av rett størrelse
+        int i = 0, j = 0, k = 0;                 // løkkevariabler
+
+        while (i < s.toCharArray().length && j < t.toCharArray().length)
+        {
+            c[k++] = s.toCharArray()[i++];      // først en verdi fra s
+            c[k++] = t.toCharArray()[j++];      // så en verdi fra t
+        }
+        // vi må ta med resten
+        while (i < s.toCharArray().length) c[k++] = s.toCharArray()[i++];
+        while (j < t.toCharArray().length) c[k++] = t.toCharArray()[j++];
+
+        String d = new String(c);
+
+        return d;
     }
 
     /// 7b)
