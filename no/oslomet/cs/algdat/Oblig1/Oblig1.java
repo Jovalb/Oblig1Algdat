@@ -5,10 +5,8 @@ package no.oslomet.cs.algdat.Oblig1;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
+
 import java.util.NoSuchElementException;
-import java.util.Random;
 import java.util.stream.IntStream;
 
 
@@ -17,156 +15,8 @@ public class Oblig1 {
     // TODO: Fjern all slags test kode i denne filen som f.eks public static void main og alt innhold i den
     // TODO: Gjør ferdig oppgave 1 teori ang gjennomsnittspørsmålet
 
-    public static void main(String[] args) {
-
-        // Oppgve 1 testing
-        System.out.println("Oppgave 1 testing: ");
-        int[] worst_case = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-
-        int[] best_case = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-
-        System.out.println("Worst Case: ");
-
-        System.out.println(ombyttinger(worst_case));
-
-        System.out.println(Arrays.toString(worst_case));
-
-        System.out.println("Best Case:");
-
-        System.out.println(ombyttinger(best_case));
-
-        System.out.println(Arrays.toString(best_case));
-
-        System.out.println("Average Case ut av 10 forskjellige arrays med 5 tall: ");
-
-        System.out.println("Stokker om 10 arrays med tall fra 1 til 10...");
-
-        int[] arr1 = new int[10];
-        int[] arr2 = new int[10];
-        int[] arr3 = new int[10];
-        int[] arr4 = new int[10];
-        int[] arr5 = new int[10];
-        int[] arr6 = new int[10];
-        int[] arr7 = new int[10];
-        int[] arr8 = new int[10];
-        int[] arr9 = new int[10];
-        int[] arr10 = new int[10];
-
-        randPerm(arr1);
-        randPerm(arr2);
-        randPerm(arr3);
-        randPerm(arr4);
-        randPerm(arr5);
-        randPerm(arr6);
-        randPerm(arr7);
-        randPerm(arr8);
-        randPerm(arr9);
-        randPerm(arr10);
-
-
-        System.out.println("Array nummer 1: " + Arrays.toString(arr1));
-        System.out.println("Array nummer 2: " + Arrays.toString(arr2));
-        System.out.println("Array nummer 3: " + Arrays.toString(arr3));
-        System.out.println("Array nummer 4: " + Arrays.toString(arr4));
-        System.out.println("Array nummer 5: " + Arrays.toString(arr5));
-        System.out.println("Array nummer 6: " + Arrays.toString(arr6));
-        System.out.println("Array nummer 7: " + Arrays.toString(arr7));
-        System.out.println("Array nummer 8: " + Arrays.toString(arr8));
-        System.out.println("Array nummer 9: " + Arrays.toString(arr9));
-        System.out.println("Array nummer 10: " + Arrays.toString(arr10));
-
-        System.out.println("Utfører ombytting på alle tabellene...");
-        double antallArrays = 10;
-        double sumAvOmbytter = ombyttinger(arr1) + ombyttinger(arr2) + ombyttinger(arr3)
-                + ombyttinger(arr4) + ombyttinger(arr5) + ombyttinger(arr6) + ombyttinger(arr7)
-                + ombyttinger(arr8) + ombyttinger(arr9) + ombyttinger(arr10);
-        double gjennomsnitt = sumAvOmbytter / antallArrays;
-
-        System.out.println("Alle ombytter lagt sammen = " + sumAvOmbytter);
-        System.out.println("Gjennomsnitt ombytter av 10 forskjellige arrays med tall fra 1 til 10 = " + gjennomsnitt);
-
-
-        //Oppgave 1
-
-        //Oppgave 2 testing
-
-        System.out.println("Oppgave 2 testing: ");
-        System.out.println("Sortert array: ");
-
-        int[] b = {3, 3, 4, 5, 5, 6, 7, 7, 7, 8};
-
-        System.out.println(Arrays.toString(b));
-        System.out.println(antallUlikeSortert(b));
-
-        //Oppgave 2
-
-        //Oppgave 3 testing
-
-        System.out.println("Oppgave 3 testing: ");
-        System.out.println("Usortert array : ");
-
-        int[] c = {1, 2, 2, 2, 2, 2, 3};
-
-        System.out.println(Arrays.toString(c));
-        if (antallUlikeUsortert(c) != 3) System.out.println("Test");
-
-        //Oppgave 4 testing
-        System.out.println("Oppgave 4 testing: ");
-
-        int[] d = {5, 3, 9, 1};
-        // randPerm(d);
-
-        System.out.println("Før delsortering: ");
-        System.out.println(Arrays.toString(d));
-        System.out.println("Etter delsortering: ");
-        delsortering(d);
-        System.out.println(Arrays.toString(d));
-
-        //Oppgave 5 testing
-        System.out.println("Oppgave 6 testing: ");
-
-        char[] e = {'A', 'B', 'C', 'D', 'E', 'F'};
-        System.out.println("k = 1");
-        System.out.println("Før: " + Arrays.toString(e));
-        rotasjon(e, 1);
-        System.out.println("Etter: " + Arrays.toString(e));
-
-        char[] f = {'A', 'B', 'C', 'D', 'E', 'F'};
-        System.out.println("k = -1");
-        System.out.println("Før: " + Arrays.toString(f));
-        rotasjon(f, -5);
-        System.out.println("Etter: " + Arrays.toString(f));
-
-        // Oppgave 7 testing
-        // 7a
-        System.out.println("Oppgave 7a testing: ");
-
-        String x = "", y = "DEFGH";
-        System.out.println(flett(x, y));
-
-        //7b
-        System.out.println("Oppgave 7b testing: ");
-        //String [] v = {"AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU"};
-        String[] v = {"ABC", "DEFGH", "IJKLMN", "OPQ"};
-        System.out.println(Arrays.toString(v));
-        System.out.println("Etter: " + flett(v));
-
-    }
 
     private Oblig1() {
-    }
-
-    // TODO: Fjern randPerm() når testing er ferdig
-    public static void randPerm(int[] a)  // stokker om a
-    {
-        Random r = new Random();     // en randomgenerator
-
-        Arrays.setAll(a, i -> i + 1); // Putter inn tall fra 1 til n i array
-
-        for (int k = a.length - 1; k > 0; k--) {
-            int i = r.nextInt(k + 1);  // tilfeldig tall fra [0,k]
-            bytt(a, k, i);
-        }
     }
 
     ///// Oppgave 1 //////////////////////////////////////
@@ -284,7 +134,6 @@ public class Oblig1 {
     }
 
     ///// Oppgave 4 //////////////////////////////////////
-    // TODO: LØST OPPGAVEN VIA MERGESORT
 
     public static void bytt(int[] a, int i, int j) {
         int temp = a[i];
@@ -403,68 +252,6 @@ public class Oblig1 {
         sort(a, 0, v);
         sort(a, h, a.length - 1);
 
-        /*
-        //if tester som sjekker om indeksene v og h stemmer
-        if (v == 0 && h == 0){
-            for (int i = 0; i < n-1; i++)
-            {
-                // Find the minimum element in unsorted array
-                int min_idx = i;
-                for (int j = i+1; j < n; j++)
-                    if (a[j] < a[min_idx])
-                        min_idx = j;
-
-                // Swap the found minimum element with the first
-                // element
-                int temp = a[min_idx];
-                a[min_idx] = a[i];
-                a[i] = temp;
-            }
-        } else if (v > h){
-            h++;
-        }
-
-        //if test som sjekker om variabelen hvor indeksene har truffet er partall eller oddetall
-        //Hvis tallet er oddetall inkrementerer vi høyreindeksen
-        if (a[h] % 2 != 0){
-            h++;
-        // Hvis tallet er partall flytter vi venstreindeksen ned et hakk
-        } else if (a[v] % 2 == 0){
-            v--;
-        }
-
-        //selection sort som sorterer partallene på høyresiden
-        for (int i = h; i < n-1; i++)
-        {
-            // Find the minimum element in unsorted array
-            int min_idx = i;
-            for (int j = i+1; j < n; j++)
-                if (a[j] < a[min_idx])
-                    min_idx = j;
-
-            // Swap the found minimum element with the first
-            // element
-            int temp = a[min_idx];
-            a[min_idx] = a[i];
-            a[i] = temp;
-        }
-
-        //Selection sort som sorterer oddetallene på venstresiden
-        for (int i = 0; i <= v; i++)
-        {
-            // Find the minimum element in unsorted array
-            int min_idx = i;
-            for (int j = i+1; j <= v; j++)
-                if (a[j] < a[min_idx])
-                    min_idx = j;
-
-            // Swap the found minimum element with the first
-            // element
-            int temp = a[min_idx];
-            a[min_idx] = a[i];
-            a[i] = temp;
-        }*/
-
     }
 
     ///// Oppgave 5 //////////////////////////////////////
@@ -580,10 +367,15 @@ public class Oblig1 {
         int n = a.length;
         //Her utnytter vi funksjonell programmering i Java 8 til å danne et array
         //Med sorterte indekser fra parameter array
-        int[] resultat = IntStream.range(0,n)
+        // Her setter vi inn primitive int fra 0 til n i arrayet
+        int[] resultat = IntStream.range(0, n)
+                // Her bruker vi .boxed for å konvertere alle de primitive int tallene til Integer tall
                 .boxed()
-                .sorted((i,j) -> a[i] - a[j])
-                .mapToInt(ele -> ele).toArray();
+                /* Deretter sorterer vi tallene med bruk av to parametere og "a" arrayet
+                *  dette gjør at alle tallene i resultat arrayet vil bli sortert likt som "a" arrayet*/
+                .sorted((i, j) -> a[i] - a[j])
+                // Til slutt konverterer vi alle Integerne tilbake til int og gjør streamen om til et array igjen
+                .mapToInt(x -> x).toArray();
 
         return resultat;
     }
