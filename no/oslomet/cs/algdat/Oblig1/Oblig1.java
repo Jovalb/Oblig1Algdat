@@ -467,7 +467,7 @@ public class Oblig1 {
     }
 
     ///// Oppgave 5 //////////////////////////////////////
-    //Fullført via bubble sort metode
+    //Fullført
     public static void rotasjon(char[] a) {
         //Sjekker om det er 0 eller 1 element
         if (a.length == 0 || a.length == 1) {
@@ -538,9 +538,20 @@ public class Oblig1 {
     /// 7b)
     public static String flett(String... s) {
 
-        // TODO: Trenger å finne ut hvordan vi kan få med alle arrays da indeks "i" stopper og det er resterende arrays
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < s.length; i++) {
+        // TODO: Fått metoden til å fullføre testen men er sykt unødvendig, indeks "i" teller unødvendig langt
+
+        //hjelpevariabel som vil inneholde antall bokstaver i alle strengene sammenlagt og en teller "k" for chararray
+        int antallChar = 0;
+        int k = 0;
+
+        for (String s1 : s) {
+            antallChar += s1.length();
+        }
+
+        char[] a = new char[antallChar];
+
+
+        for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < s.length; j++) {
 
                 while (i >= s[j].length()) {
@@ -555,56 +566,14 @@ public class Oblig1 {
                     break;
                 }
 
-                result.append(s[j].charAt(i));
-            }
+                a[k++] = s[j].charAt(i);
 
-        }
-
-        return result.toString();
-
-
-        /*
-        int sumStringLengde = 0;
-
-        for (String s1 : s) {
-            sumStringLengde += s1.length();
-        }
-
-        /*
-        for (int i = 0; i < s.length ; i++) {
-            sumStringLengde += s[i].length();
-        }*/
-
-        /*
-        char [] a = new char[sumStringLengde];
-        int i = 0, j = 0, k = 0,x = 0;
-
-        for (; k < a.length; j++,i++,x++){
-            for (int y = 0; y < s.length; y+=2) {
-                while (x >= s[y].length()){
-                    if (y == s[y].length()){
-                        y--;
-                    }else {
-                        y++;
-                    }
-
-                }
-                if (y >= s.length-1){
-                    a[k++] = s[y].toCharArray()[i];
-                } else if (s[y+1].length() <= x){
-                    a[k++] = s[y-1].toCharArray()[j];
-                    a[k++] = s[y].toCharArray()[i];
-                }
-                else{
-                    a[k++] = s[y].toCharArray()[i];
-                    a[k++] = s[y+1].toCharArray()[j];
-                }
             }
 
         }
 
         String b = new String(a);
-        return b;*/
+        return b;
     }
 
     ///// Oppgave 8 //////////////////////////////////////
