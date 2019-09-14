@@ -9,6 +9,7 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 
 public class Oblig1 {
@@ -538,8 +539,6 @@ public class Oblig1 {
     /// 7b)
     public static String flett(String... s) {
 
-        // TODO: Fått metoden til å fullføre testen men er sykt unødvendig, indeks "i" teller unødvendig langt
-
         //hjelpevariabel som vil inneholde antall bokstaver i alle strengene sammenlagt og en teller "k" for chararray
         int antallChar = 0;
         int k = 0;
@@ -578,7 +577,15 @@ public class Oblig1 {
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
-        throw new NotImplementedException();
+        int n = a.length;
+        //Her utnytter vi funksjonell programmering i Java 8 til å danne et array
+        //Med sorterte indekser fra parameter array
+        int[] resultat = IntStream.range(0,n)
+                .boxed()
+                .sorted((i,j) -> a[i] - a[j])
+                .mapToInt(ele -> ele).toArray();
+
+        return resultat;
     }
 
 
