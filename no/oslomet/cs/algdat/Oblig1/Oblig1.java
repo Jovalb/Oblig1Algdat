@@ -372,7 +372,7 @@ public class Oblig1 {
                 // Her bruker vi .boxed for å konvertere alle de primitive int tallene til Integer tall
                 .boxed()
                 /* Deretter sorterer vi tallene med bruk av to parametere og "a" arrayet
-                *  dette gjør at alle tallene i resultat arrayet vil bli sortert likt som "a" arrayet*/
+                 *  dette gjør at alle tallene i resultat arrayet vil bli sortert likt som "a" arrayet*/
                 .sorted((i, j) -> a[i] - a[j])
                 // Til slutt konverterer vi alle Integerne tilbake til int og gjør streamen om til et array igjen
                 .mapToInt(x -> x).toArray();
@@ -383,7 +383,36 @@ public class Oblig1 {
 
     ///// Oppgave 9 //////////////////////////////////////
     public static int[] tredjeMin(int[] a) {
-        throw new NotImplementedException();
+        if (a.length < 3) {
+            throw new NoSuchElementException("Tabellen du har lagt inn har færre enn 3 elementer!");
+        }
+        int min1Idx = 0;
+        int min2Idx = 1;
+        int min3Idx = 2;
+
+        int min1 = a[min1Idx];
+        int min2 = a[min2Idx];
+        int min3 = a[min3Idx];
+
+
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] <= min1) {
+                min1Idx = i;
+                min1 = a[i];
+            } else if (a[i] <= min2) {
+                min2Idx = i;
+                min2 = a[i];
+            } else if (a[i] <= min3) {
+                min3Idx = i;
+                min3 = a[i];
+            }
+
+        }
+
+        int[] resultat = {min1Idx, min2Idx, min3Idx};
+
+        return resultat;
+
     }
 
     ///// Oppgave 10 //////////////////////////////////////
