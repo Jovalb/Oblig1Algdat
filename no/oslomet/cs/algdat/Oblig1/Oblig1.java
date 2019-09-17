@@ -31,7 +31,8 @@ public class Oblig1 {
      * få gjennomsnittet om vi legger sammen alle ombyttingene og deler det på antall forsøk.
      * Etter å ha testet med 10 arrays med 10 tall fra 1 til 10 har jeg kommet frem til
      * at det er gjennomsnittlig 7 ombytter ut av 10 tilfeldig permuterte arrays.
-     * Hvis vi skal bruke O notasjon vil den utføre byttet
+     * Her har jeg funnet ut at gjennomsnittlig antall ombyttinger vil bli n-h(n), altså
+     * n minus det harmoniske tallet.
      */
     public static int maks(int[] a) {
         if (a.length < 1) {
