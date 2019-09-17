@@ -426,8 +426,64 @@ public class Oblig1 {
         throw new NotImplementedException();
     }
 
+    public static void quickSort(char arr[], int v, int h)
+    {
+        int i = v;
+        int j = h;
+        char tmp;
+
+        int pivot = (v+h)/2;
+
+        while (i <= j) {
+            while(arr[i] < arr[pivot]){
+                i++;
+            }
+            while(arr[j] > arr[pivot]){
+                j--;
+            }
+
+            if(i <= j) {
+                tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+                i++;
+                j--;
+            }
+        }
+
+        if(v < j){
+            quickSort(arr,v, j);
+        }
+        if(i < h){
+            quickSort(arr,i,h);
+        }
+    }
+
+
     public static boolean inneholdt(String a, String b) {
-        throw new NotImplementedException();
+        if (a.length() < 1 ){
+            return true;
+        }
+        char [] input = a.toCharArray();
+        char [] mainString = b.toCharArray();
+
+        quickSort(input,0,input.length-1);
+        quickSort(mainString,0,mainString.length-1);
+
+        int j = 0;
+
+        for (int i = 0; i < mainString.length && j < input.length; i++){
+            if (mainString[i] == input[j]){
+                j++;
+            }
+        }
+
+        if (j == input.length){
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 }  // Oblig1
