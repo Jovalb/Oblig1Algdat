@@ -390,28 +390,34 @@ public class Oblig1 {
         int min2Idx = 1;
         int min3Idx = 2;
 
-        int min1 = a[min1Idx];
-        int min2 = a[min2Idx];
-        int min3 = a[min3Idx];
-
+        int min1 = Integer.MAX_VALUE;
+        int min2 = Integer.MAX_VALUE;
+        int min3 = Integer.MAX_VALUE;
 
         for (int i = 0; i < a.length; i++) {
-            if (a[i] <= min1) {
-                min1Idx = i;
+            if (a[i] < min1) {
+                min3 = min2;
+                min3Idx = min2Idx;
+                min2 = min1;
+                min2Idx = min1Idx;
                 min1 = a[i];
-            } else if (a[i] <= min2) {
-                min2Idx = i;
+                min1Idx = i;
+            } else if (a[i] < min2) {
+                min3 = min2;
+                min3Idx = min2Idx;
                 min2 = a[i];
-            } else if (a[i] <= min3) {
-                min3Idx = i;
+                min2Idx = i;
+            } else if (a[i] < min3) {
                 min3 = a[i];
+                min3Idx = i;
             }
-
         }
 
         int[] resultat = {min1Idx, min2Idx, min3Idx};
 
+
         return resultat;
+
 
     }
 
