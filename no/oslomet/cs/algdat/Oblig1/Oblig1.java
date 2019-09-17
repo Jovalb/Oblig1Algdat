@@ -7,13 +7,8 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 
 import java.util.NoSuchElementException;
-import java.util.stream.IntStream;
-
 
 public class Oblig1 {
-
-    // TODO: Fjern all slags test kode i denne filen som f.eks public static void main og alt innhold i den
-    // TODO: Gjør ferdig oppgave 1 teori ang gjennomsnittspørsmålet
 
 
     private Oblig1() {
@@ -136,12 +131,6 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
 
-    public static void bytt(int[] a, int i, int j) {
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-    }
-
     static void merge(int arr[], int v, int m, int h) {
         // Finne størrelser av subarray
         int n1 = m - v + 1;
@@ -192,14 +181,14 @@ public class Oblig1 {
     }
 
     // Hoved funksjon som sorterer arrayet vil være merge metoden
-    static void sort(int arr[], int v, int h) {
+    static void mergeSort(int arr[], int v, int h) {
         if (v < h) {
             // Finner midtpunktet
             int m = (v + h) / 2;
 
             // Sorterer første halvdel, og andre halvdel av arrayet
-            sort(arr, v, m);
-            sort(arr, m + 1, h);
+            mergeSort(arr, v, m);
+            mergeSort(arr, m + 1, h);
 
             // Merger de sorterte arrayene
             merge(arr, v, m, h);
@@ -238,7 +227,7 @@ public class Oblig1 {
         }
 
         if (v == 0 || h == 0) {
-            sort(a, 0, a.length - 1);
+            mergeSort(a, 0, a.length - 1);
             return;
         }
 
@@ -250,8 +239,8 @@ public class Oblig1 {
             v--;
         }
 
-        sort(a, 0, v);
-        sort(a, h, a.length - 1);
+        mergeSort(a, 0, v);
+        mergeSort(a, h, a.length - 1);
 
     }
 
@@ -364,21 +353,77 @@ public class Oblig1 {
     }
 
     ///// Oppgave 8 //////////////////////////////////////
+    public static int partition(int arr[], int low, int high) {
+        int pivot = arr[high];
+        int i = (low - 1); // index of smaller element
+        for (int j = low; j < high; j++) {
+            // If current element is smaller than the pivot
+            if (arr[j] < pivot) {
+                i++;
+
+                // swap arr[i] and arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        // swap arr[i+1] and arr[high] (or pivot)
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+
+        return i + 1;
+    }
+
+
+    /* The main function that implements QuickSort()
+      arr[] --> Array to be sorted,
+      low  --> Starting index,
+      high  --> Ending index */
+    public static void quickSort(int arr[], int low, int high) {
+        if (low < high) {
+            /* pi is partitioning index, arr[pi] is
+              now at right place */
+            int pi = partition(arr, low, high);
+
+            // Recursively quickSort elements before
+            // partition and after partition
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+
     public static int[] indekssortering(int[] a) {
         int n = a.length;
-        //Her utnytter vi funksjonell programmering i Java 8 til å danne et array
-        //Med sorterte indekser fra parameter array
-        // Her setter vi inn primitive int fra 0 til n i arrayet
-        int[] resultat = IntStream.range(0, n)
-                // Her bruker vi .boxed for å konvertere alle de primitive int tallene til Integer tall
-                .boxed()
-                /* Deretter sorterer vi tallene med bruk av to parametere og "a" arrayet
-                 *  dette gjør at alle tallene i resultat arrayet vil bli sortert likt som "a" arrayet*/
-                .sorted((i, j) -> a[i] - a[j])
-                // Til slutt konverterer vi alle Integerne tilbake til int og gjør streamen om til et array igjen
-                .mapToInt(x -> x).toArray();
 
-        return resultat;
+        int[] index = new int[n];
+        for (int i = 0; i < index.length; i++) {
+            index[i] = i;
+        }
+        int[] sortertArray = new int[n];
+
+        for (int i = 0; i < sortertArray.length; i++) {
+            sortertArray[i] = a[i];
+        }
+
+        if (sortertArray.length == 1) {
+            return index;
+        }
+
+        quickSort(sortertArray, 0, sortertArray.length - 1);
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (a[j] == sortertArray[i]) {
+                    index[i] = j;
+                }
+            }
+
+        }
+
+        return index;
+
     }
 
 
@@ -427,23 +472,22 @@ public class Oblig1 {
         throw new NotImplementedException();
     }
 
-    public static void quickSort(char arr[], int v, int h)
-    {
+    public static void quickSortChar(char arr[], int v, int h) {
         int i = v;
         int j = h;
         char tmp;
 
-        int pivot = (v+h)/2;
+        int pivot = (v + h) / 2;
 
         while (i <= j) {
-            while(arr[i] < arr[pivot]){
+            while (arr[i] < arr[pivot]) {
                 i++;
             }
-            while(arr[j] > arr[pivot]){
+            while (arr[j] > arr[pivot]) {
                 j--;
             }
 
-            if(i <= j) {
+            if (i <= j) {
                 tmp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = tmp;
@@ -452,34 +496,34 @@ public class Oblig1 {
             }
         }
 
-        if(v < j){
-            quickSort(arr,v, j);
+        if (v < j) {
+            quickSortChar(arr, v, j);
         }
-        if(i < h){
-            quickSort(arr,i,h);
+        if (i < h) {
+            quickSortChar(arr, i, h);
         }
     }
 
 
     public static boolean inneholdt(String a, String b) {
-        if (a.length() < 1 ){
+        if (a.length() < 1) {
             return true;
         }
-        char [] input = a.toCharArray();
-        char [] mainString = b.toCharArray();
+        char[] input = a.toCharArray();
+        char[] mainString = b.toCharArray();
 
-        quickSort(input,0,input.length-1);
-        quickSort(mainString,0,mainString.length-1);
+        quickSortChar(input, 0, input.length - 1);
+        quickSortChar(mainString, 0, mainString.length - 1);
 
         int j = 0;
 
-        for (int i = 0; i < mainString.length && j < input.length; i++){
-            if (mainString[i] == input[j]){
+        for (int i = 0; i < mainString.length && j < input.length; i++) {
+            if (mainString[i] == input[j]) {
                 j++;
             }
         }
 
-        if (j == input.length){
+        if (j == input.length) {
             return true;
         } else {
             return false;
