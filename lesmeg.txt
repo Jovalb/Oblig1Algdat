@@ -1,0 +1,5 @@
+Oblig 1 ALGDAT
+
+student: s329329 Jo Vetle Albrethsen
+
+ALLE TESTER FULLFØRT OK! Se vedlagt HTML fil for test resultater.

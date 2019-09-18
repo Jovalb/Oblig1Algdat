@@ -353,10 +353,10 @@ public class Oblig1 {
     }
 
     ///// Oppgave 8 //////////////////////////////////////
-    public static int partition(int arr[], int low, int high) {
-        int pivot = arr[high];
-        int i = (low - 1); // index of smaller element
-        for (int j = low; j < high; j++) {
+    public static int partition(int arr[], int v, int h) {
+        int pivot = arr[h];
+        int i = (v - 1); // index of smaller element
+        for (int j = v; j < h; j++) {
             // If current element is smaller than the pivot
             if (arr[j] < pivot) {
                 i++;
@@ -368,10 +368,10 @@ public class Oblig1 {
             }
         }
 
-        // swap arr[i+1] and arr[high] (or pivot)
+        // swap arr[i+1] and arr[h] (or pivot)
         int temp = arr[i + 1];
-        arr[i + 1] = arr[high];
-        arr[high] = temp;
+        arr[i + 1] = arr[h];
+        arr[h] = temp;
 
         return i + 1;
     }
@@ -379,18 +379,18 @@ public class Oblig1 {
 
     /* The main function that implements QuickSort()
       arr[] --> Array to be sorted,
-      low  --> Starting index,
-      high  --> Ending index */
-    public static void quickSort(int arr[], int low, int high) {
-        if (low < high) {
+      v  --> Starting index,
+      h  --> Ending index */
+    public static void quickSort(int arr[], int v, int h) {
+        if (v < h) {
             /* pi is partitioning index, arr[pi] is
               now at right place */
-            int pi = partition(arr, low, high);
+            int pi = partition(arr, v, h);
 
             // Recursively quickSort elements before
             // partition and after partition
-            quickSort(arr, low, pi - 1);
-            quickSort(arr, pi + 1, high);
+            quickSort(arr, v, pi - 1);
+            quickSort(arr, pi + 1, h);
         }
     }
 
@@ -430,7 +430,7 @@ public class Oblig1 {
     ///// Oppgave 9 //////////////////////////////////////
     public static int[] tredjeMin(int[] a) {
         if (a.length < 3) {
-            throw new NoSuchElementException("Tabellen du har lagt inn har færre enn 3 elementer!");
+            throw new NoSuchElementException("Tabellen du har lagt inn har mindre enn 3 elementer!");
         }
         int min1Idx = 0;
         int min2Idx = 1;
