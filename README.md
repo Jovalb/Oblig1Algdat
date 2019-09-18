@@ -9,3 +9,5 @@ Oppgaven er levert av følgende studenter:
 I oppgaven har vi hatt følgende arbeidsfordeling:
 * Alle oppgaver har blitt gjort av Jo Vetle
 
+Alle tester utført og testet ok!
+
